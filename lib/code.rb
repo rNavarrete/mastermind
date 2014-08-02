@@ -1,4 +1,5 @@
 class Code
+	
 	attr_reader :difficulty       # => nil
 	def initialize(difficulty=4)
 	  @difficulty = difficulty    # => 4
@@ -12,16 +13,16 @@ class Code
 			random_color = random_color.rand(100)  # => 54, 5, 49, 29
 			case random_color                      # => 54, 5, 49, 29
 			when  0..25
-			 @code << "R"                          # => ["B", "R"]
+			 @code << "r"                          # => ["B", "R"]
 				i += 1                                # => 2
 			when 26..50
-			 @code << "G"                          # => ["B", "R", "G"], ["B", "R", "G", "G"]
+			 @code << "g"                          # => ["B", "R", "G"], ["B", "R", "G", "G"]
 			  i += 1                               # => 3, 4
 			when 51..75  	
-		   @code << "B"                         # => ["B"]
+		   @code << "b"                         # => ["B"]
 		    i += 1                              # => 1
 		  when 76..100
-		   @code << "Y"
+		   @code << "y"
 		    i += 1
 			end                                    # => 1, 2, 3, 4
 		end                                     # => nil
