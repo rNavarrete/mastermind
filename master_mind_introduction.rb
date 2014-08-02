@@ -1,25 +1,34 @@
+require_relative 'game'  # => true
+
 class MasterMind
 
 	def start_up
-		puts 'Welcome to MASTERMIND Would you like to (p)lay, read the (i)nstructions, or (q)uit?'
-		command = ""
-		while command != 'q'
-			command = gets.chomp
+		puts "Welcome to MASTERMIND Would you like to (p)lay, read the (i)nstructions, or (q)uit?"  # => nil
+		command = ""                                                                                # => ""
+		while command != "q"                                                                        # => true
+			command = gets.chomp                                                                       # ~> NoMethodError: undefined method `chomp' for nil:NilClass
 			case command
-			  when 'p'
-			  	puts ""
-				  puts "hi"
-				  puts ""
-				when 'play'
-				  puts "Flaco"  
-			  when 'i'
+				when "play", "p"
+						puts "Please enter a difficulty, (b)eginner, (i)ntermediate, (h)ard or (q)uit."
+						difficulty = gets.chomp
+						 case difficulty
+						 when "b", "beginner"
+						 	difficulty = 4
+						 	Game.new(difficulty)
+						 when "i", "intermediate"
+						  difficulty = 5 	
+						  Game.new(difficulty)
+						 when "h", "hard"
+						  difficulty = 6
+						  Game.new(difficulty)
+						 else
+						   puts "Try again."
+						   start_up  
+						 end 
+			  when 'i', "instructions"
 				  instructions
-				when 'instructions'
-					instructions   
-			  when 'q'
+			  when "q", "quit"
 				  break
-				when "quit"
-					break	   
 			  else
 			  	puts ""
 				  puts "Not sure what you're trying to do buddy."
@@ -45,5 +54,14 @@ end
 
 
 
-master_mind = MasterMind.new
+master_mind = MasterMind.new  # => #<MasterMind:0x000001010c52e0>
 master_mind.start_up
+
+# >> Hello
+# >> Welcome to MASTERMIND Would you like to (p)lay, read the (i)nstructions, or (q)uit?
+
+# ~> NoMethodError
+# ~> undefined method `chomp' for nil:NilClass
+# ~>
+# ~> /Users/Home/Desktop/MasterMind/master_mind_introduction.rb:9:in `start_up'
+# ~> /Users/Home/Desktop/MasterMind/master_mind_introduction.rb:57:in `<main>'
