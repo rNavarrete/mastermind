@@ -3,13 +3,16 @@ require_relative 'player_interaction'
 class MasterMind
 
 	def start_up
-		puts "Welcome to MASTERMIND" 
-		puts "Would you like to (p)lay, read the (i)nstructions, or (q)uit?"
 		command = ""
 		while command != "q"
+		puts ""	
+		puts "Welcome to MASTERMIND" 
+		puts "Would you like to (p)lay, read the (i)nstructions, or (q)uit?"
+
 			command = gets.chomp
 			case command
 				when "play", "p"
+					  puts ""
 						puts "Please enter a difficulty, (b)eginner, (i)ntermediate, (h)ard or (q)uit."
 						difficulty = gets.chomp
 						 case difficulty
@@ -36,7 +39,7 @@ class MasterMind
 			  else
 			  	puts ""
 				  puts "Not sure what you're trying to do buddy."
-				  intro_message
+				  puts "Let's try this again."
 			end
 		end
 		puts ""	
