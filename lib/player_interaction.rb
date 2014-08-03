@@ -46,7 +46,6 @@ class GameFlow
 		@player_guess
 	end
 
-
   def winning_message
  	  puts "" 
     puts "Hey you got it! You're a true MasterMind."	
