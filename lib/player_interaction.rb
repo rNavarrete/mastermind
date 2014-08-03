@@ -17,19 +17,22 @@ class GameFlow
 	end
 	
 	def game_flow
-		i = 0
+		@i = 0
 		generate_code
 		@input = gets.chomp
+		@time1 = Time.now
 		create_player_guess
 		process_code_and_player_guess
 		while @results.positions_correct != @code.length
-		  i += 1
+		  @i += 1
 		  puts "#{@player_guess.guess.join} has #{@results.colors_correct} of the correct elements with #{@results.positions_correct} in the correct positions."
-		  puts "You've taken #{i} guess."
+		  puts "You've taken #{@i} guess."
 		  @input = gets.chomp
 		  create_player_guess
 		  @results = GuessCompare.new(@player_guess.guess, @code)
 		end
+		@time2 = Time.now
+		@time3 = @time2 - @time1
 		winning_message
 	end
 
@@ -44,11 +47,11 @@ class GameFlow
 	end
 
 
- def winning_message
- 	 puts "" 
-   puts "Hey you got it! You're a true MasterMind."	
-   puts "Congratulations! You guessed the sequence #{@code} in #{""} guesses over #{""}."
- end
+  def winning_message
+ 	  puts "" 
+    puts "Hey you got it! You're a true MasterMind."	
+    puts "Congratulations! You guessed the sequence #{@code.join} in #{@i} guesses over about #{@time3.round / 60} minutes."
+  end
 
 	def generate_code
 		code = Code.new(@difficulty)
