@@ -3,7 +3,6 @@ require_relative '../lib/guess_compare'
 
 
 class GuessCompareTest < Minitest::Test
-
   def test_removes_repeated_elements
  		guess   = ["y","y","y","y"]
   	code    = ["r","r","r","y"]
