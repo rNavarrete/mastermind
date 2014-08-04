@@ -1,13 +1,15 @@
 require_relative 'sequence_generator'           # => true
 require_relative 'guess'        # => true
 require_relative 'guess_compare'  # => true
+require_relative 'user_messages'
 
 class Game
-	attr_reader :difficulty, :code, :player_guess, :results, :time1
+	attr_reader :difficulty, :code, :player_guess, :results, :time1, :messages
 	
 	def initialize(difficulty=4)
 		@difficulty = difficulty
 		generate_code
+		@messages = UserMessages.new
 	end
 
 	def intro_message
@@ -31,7 +33,10 @@ class Game
 		end
 		end_time
 		time_difference
-		winning_message
+		messages.winning_message
+    puts "Congratulations! You guessed the sequence #{@code.join} in #{@i} guesses over about #{@time3.round / 60} minute#{@time3 < 30 ? nil : "s"}."		
+    play_again_or_quit
+
 	end
 
 	def process_code_and_player_guess
@@ -55,12 +60,6 @@ class Game
 		end	
 	end
 
-  def winning_message
- 	  puts "" 
-    puts "Hey you got it! You're a true MasterMind."	
-    puts "Congratulations! You guessed the sequence #{@code.join} in #{@i} guesses over about #{@time3.round / 60} minute#{@time3 < 30 ? nil : "s"}."
-    play_again_or_quit
-  end
 
 	def generate_code
 		code = SequenceGenerator.new(@difficulty)
