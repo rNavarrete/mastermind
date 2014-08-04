@@ -2,7 +2,7 @@ class Guess
 	attr_reader :code, :difficulty
 
 	def initialize(input, difficulty=4)
-		@code = input.downcase.split(//)
+		@code = input.upcase.split(//)
 		@difficulty = difficulty
 	end
 
@@ -33,8 +33,15 @@ class Guess
 	end	  
 
 	def invalid_characters?
-		@code.any? {|letter| letter =~ /[^grbyop]/}
-	end
+		case difficulty
+		when 4
+		  @code.any? {|letter| letter =~ /[^GRBY]/}
+		when 6
+		  @code.any? {|letter| letter =~ /[^GRBYP]/}
+		when 8
+		  @code.any? {|letter| letter =~ /[^GRBYPO]/}      
+	  end
+	end  
 end
 
 

@@ -2,9 +2,11 @@ require_relative 'sequence_generator'           # => true
 require_relative 'guess'        # => true
 require_relative 'guess_compare'  # => true
 require_relative 'user_messages'
+require 'colorize'
+
 
 class Game
-	attr_reader :difficulty, :code, :player_guess, :results, :time1, :messages
+	attr_reader :difficulty, :secret_code, :player_guess, :results, :time1, :messages
 	
 	def initialize(difficulty=4)
 		@difficulty = difficulty
@@ -14,8 +16,8 @@ class Game
 
 	def intro_message
 		puts ""
-		puts "I have generated a beginner sequence with #{@difficulty} elements made up of: (r)ed,"
-		puts "(g)reen, (b)lue, and (y)ellow. Use (q)uit at any time to end the game."
+		puts "I have generated a sequence with #{difficulty} elements made up of:" + "#{difficulty == 8 ? "(o)range":nil}".colorize(:light_red) + " (r)ed".colorize(:red)
+		puts "(g)reen".colorize(:green)+ ", "+ "(b)lue".colorize(:blue) + ", #{difficulty.to_i > 5 ? "(p)urple":nil}".colorize(:magenta) +" and " + "(y)ellow".colorize(:yellow) + " Use (q)uit at any time to end the game."
 		game_flow		
 	end
 	
@@ -24,23 +26,23 @@ class Game
 		start_time
 		create_player_guess
 		process_code_and_player_guess
-		while @results.positions_correct != code.length
+		while @results.positions_correct != secret_code.length
 		  @i += 1
-		  puts "#{@player_guess.code.join} has #{@results.colors_correct} of the correct elements with #{@results.positions_correct} in the correct positions."
-		  puts "You've taken #{@i} guess. Try again."
+		  puts "'#{@player_guess.code.join}' has #{@results.colors_correct} of the correct elements with #{@results.positions_correct} in the correct positions."
+		  puts "You've taken #{@i} #{@i = 1 ? "guess" : "guesses"}. Try again."
 		  create_player_guess
-		  @results = GuessCompare.new(player_guess.code, code)
+		  @results = GuessCompare.new(player_guess.code, secret_code)
 		end
 		end_time
 		time_difference
 		messages.winning_message
-    puts "Congratulations! You guessed the sequence #{@code.join} in #{@i} guesses over about #{@time3.round / 60} minute#{@time3 < 30 ? nil : "s"}."		
+    puts "Congratulations! You guessed the sequence '#{@secret_code.join}' in #{@i} guesses over about #{@time3.round / 60} minute#{@time3 < 30 ? nil : "s"}."		
     play_again_or_quit
 
 	end
 
 	def process_code_and_player_guess
-		@results = GuessCompare.new(player_guess.code, code)
+		@results = GuessCompare.new(player_guess.code, secret_code)
 	end
 
 	def create_player_guess
@@ -63,7 +65,7 @@ class Game
 
 	def generate_code
 		code = SequenceGenerator.new(@difficulty)
-		@code = code.secret_code
+		@secret_code = code.secret_code
 	end
 
 	def start_time

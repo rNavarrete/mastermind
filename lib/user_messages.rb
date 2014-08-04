@@ -1,6 +1,7 @@
+require 'colorize'
 class UserMessages
 
-	def instructions
+	def instructions                 
 	  puts ""	
 	  puts "The computer will create a random four-six letter code. The computer chooses a pattern of four to six color sequences according to the chosen difficulty. Duplicates are allowed, so the player could even choose four letters of the same color."
 	  puts "The chosen pattern is placed in the four holes covered by the shield, visible to the codemaker but not to the codebreaker."
@@ -9,8 +10,8 @@ class UserMessages
 
   def welcome_message
   	puts ""	
-		puts "Welcome to MASTERMIND" 
-		puts "Would you like to (p)lay, read the (i)nstructions, or (q)uit?"
+		puts "Welcome to MasterMind".colorize(:green)
+		puts "Would you like to" +"(p)".colorize(:green)+"lay read the "+"(i)".colorize(:green)+"nstructions, or "+"(q)".colorize(:green)+"uit?"
   end
 
   def quit_message
@@ -27,7 +28,8 @@ class UserMessages
   end
 
   def set_difficulty_message
-  	puts "Please enter a difficulty, (b)eginner, (i)ntermediate, (h)ard or (q)uit."
+    puts""
+  	puts "Please enter a difficulty,"+" (b)".colorize(:green) +"eginner, "+"(i)".colorize(:green)+"ntermediate, "+"(h)".colorize(:green)+"ard or "+"(q)".colorize(:green)+"uit."
   end
 
   def winning_message

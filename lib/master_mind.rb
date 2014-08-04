@@ -9,15 +9,16 @@ class MasterMind
 
 	
 	def start_up_options
-		messages.welcome_message
-		@command = gets.chomp		
 		while command != "q"
+			messages.welcome_message
+			@command = gets.chomp		
 			case command
 			when "play", "p"
 			  set_difficulty_and_start_game	
 			  break  
 			when 'i', "instructions"
 			  messages.instructions
+			  command = ""
 			when "q", "quit"
 			  break
 			else
