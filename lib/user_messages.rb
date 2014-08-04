@@ -8,6 +8,14 @@ class UserMessages
 	  puts ""
 	end
 
+  def try_again_message
+    puts "Try again."
+  end
+
+  def play_again_message
+    puts "Do you want to (p)lay again or (q)uit?"    
+  end
+
   def welcome_message
   	puts ""	
 		puts "Welcome to MasterMind".colorize(:green)
@@ -45,6 +53,10 @@ class UserMessages
 
   def ask_for_guess
     puts "What's your guess?"
+  end
+
+  def session_time_message(secret_code, guess_counter, time3)
+    puts "Congratulations! You guessed the sequence '#{secret_code.join}' in #{guess_counter} guesses #{time3.round / 60 < 1 ? "in under a minute, nice!" : "over about #{time3.round / 60} minute#{time3 <= 1 ? nil : "s"}."}"         
   end
 
   def guess_too_long(difficulty)

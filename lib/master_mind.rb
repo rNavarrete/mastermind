@@ -1,5 +1,4 @@
 require_relative 'game'
-require "pry"
 
 class MasterMind
 	attr_reader :messages, :difficulty, :command
@@ -12,7 +11,7 @@ class MasterMind
 		until quit?
 			messages.welcome_message
 			@command = gets.strip		
-			case
+			case 
 			when play?
 				set_difficulty_and_start_game	
 			when instructions?
@@ -40,7 +39,7 @@ class MasterMind
 		when hard?
 			@difficulty = 8
 		else
-			puts "Try again."
+			messages.try_again_message
 			set_difficulty_and_start_game
 		end
 		start_game

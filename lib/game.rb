@@ -6,11 +6,12 @@ require 'colorize'
 
 class Game
 	attr_reader :difficulty, 
-							:secret_code, 
-							:player_guess, 
-							:results, 
-							:time1, 
-							:messages
+	:secret_code, 
+	:player_guess, 
+	:results, 
+	:time1, 
+	:messages,
+	:time3
 	
 	attr_accessor :guess_counter
 	
@@ -30,7 +31,7 @@ class Game
 		until win?
 			@guess_counter += 1
 			messages.guess_assessment(player_guess, results)
-			messages.guess_count
+			messages.guess_count(guess_counter)
 			create_player_guess
 			@results = GuessCompare.new(player_guess.code, secret_code)
 		end
@@ -38,7 +39,8 @@ class Game
 		end_time
 		time_difference
 		messages.winning_message
-		puts "Congratulations! You guessed the sequence '#{@secret_code.join}' in #{guess_counter} guesses #{@time3.round / 60 < 1 ? "in under a minute, nice!" : "over about #{@time3.round / 60} minute#{@time3 > 1 ? nil : "s"}."}"     		
+		messages.session_time_message(secret_code, guess_counter, time3)
+		messages.play_again_message
 		play_again_or_quit
 	end
 
@@ -50,16 +52,17 @@ class Game
 		messages.ask_for_guess
 		@input = gets.strip
 		@player_guess = Guess.new(@input, @difficulty)
-		
 		case
 		when player_guess.too_long?
 			messages.guess_too_long(difficulty)
+			create_player_guess
 		when player_guess.too_short?
 			messages.guess_too_short(difficulty)
+			create_player_guess
 		when player_guess.invalid_characters? 
 			messages.guess_is_invalid
+			create_player_guess
 		end
-		create_player_guess
 	end
 
 	def generate_code
@@ -79,12 +82,12 @@ class Game
 	end
 
 	def play_again_or_quit
-		puts "Do you want to (p)lay again or (q)uit?"
-		entry = gets.chomp
+		entry = gets.strip
 		case
 		when play?(entry)
 			start_game
 		when quit?(entry)
+			exit
 		end  	  	
 	end
 
