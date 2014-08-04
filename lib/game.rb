@@ -85,8 +85,9 @@ class Game
 		entry = gets.strip
 		case
 		when play?(entry)
-			start_game
+			@mastermind = MasterMind.new.set_difficulty_and_start_game
 		when quit?(entry)
+			messages.quit_message
 			exit
 		end  	  	
 	end

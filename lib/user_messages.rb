@@ -19,7 +19,7 @@ class UserMessages
   def welcome_message
   	puts ""	
 		puts "Welcome to MasterMind".colorize(:green)
-		puts "Would you like to" +"(p)".colorize(:green)+"lay read the "+"(i)".colorize(:green)+"nstructions, or "+"(q)".colorize(:green)+"uit?"
+		puts "Would you like to #{"(p)".colorize(:magenta)}lay, read the #{"(i)".colorize(:light_blue)}nstructions, or #{"(q)".colorize(:red)}uit?"
   end
 
   def quit_message
@@ -37,7 +37,7 @@ class UserMessages
 
   def set_difficulty_message
     puts""
-  	puts "Please enter a difficulty,"+" (b)".colorize(:green) +"eginner, "+"(i)".colorize(:green)+"ntermediate, "+"(h)".colorize(:green)+"ard or "+"(q)".colorize(:green)+"uit."
+  	puts "Please enter a difficulty,#{"(b)".colorize(:green)}eginner, #{"(i)".colorize(:green)}ntermediate, #{"(h)".colorize(:green)}ard or #{"(q)".colorize(:green)}uit."
   end
 
   def winning_message
@@ -47,8 +47,8 @@ class UserMessages
 
   def game_intro(difficulty)
     puts ""
-    puts "I have generated a sequence with #{difficulty} elements made up of:" + "#{difficulty == 8 ? "(o)range":nil}".colorize(:light_red) + " (r)ed".colorize(:red)
-    puts "(g)reen".colorize(:green) + ", " + "(b)lue,".colorize(:blue) + " #{difficulty.to_i > 5 ? "(p)urple":nil}".colorize(:magenta) + " and " + "(y)ellow".colorize(:yellow) + " Use (q)uit at any time to end the game."
+    puts "I have generated a sequence with #{difficulty} elements made up of:#{difficulty == 8 ? '(o)range'.colorize(:light_red) : nil} #{"(r)ed".colorize(:red)}"
+    puts "#{"(g)reen".colorize(:green)}, #{"(b)lue".colorize(:blue)},#{difficulty.to_i > 5 ? "(p)urple".colorize(:magenta) : nil} #{"(y)ellow".colorize(:yellow)}. Use (q)uit at any time to end the game."
   end
 
   def ask_for_guess
