@@ -3,7 +3,7 @@ class GuessCompare
 
 	def initialize(guess, code)
 		@guess = guess
-		@code = code
+		@code  = code
 	end
 	
 	def	positions_correct

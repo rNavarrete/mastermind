@@ -24,11 +24,11 @@ class Guess
 		end    	
 	end
 
-	def guess_too_long?
+	def too_long?
 	  code.length > difficulty ? true:false
 	end	
 
-  def guess_too_short?
+  def too_short?
     code.length < difficulty ? true:false
 	end	  
 
