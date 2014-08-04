@@ -16,7 +16,7 @@ class UserMessages
 
   def quit_message
   	puts ""	
-		puts "Thanks for trying out Master Mind."
+		puts "Thanks for playing Master Mind!"
 		puts ""
   end
 
