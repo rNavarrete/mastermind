@@ -2,6 +2,7 @@ require_relative 'sequence_generator'
 require_relative 'guess'
 require_relative 'guess_compare'
 require_relative 'user_messages'
+require_relative 'json_creator'
 require 'colorize'
 
 class Game
@@ -11,7 +12,8 @@ class Game
 	:results, 
 	:time1, 
 	:messages,
-	:time3
+	:time3,
+	:name
 	
 	attr_accessor :guess_counter
 	
@@ -39,6 +41,8 @@ class Game
 		end_time
 		time_difference
 		messages.winning_message
+		@name = gets.strip
+		@json = Scores.new(name, secret_code, guess_counter, time3).store_score		
 		messages.session_time_message(secret_code, guess_counter, time3)
 		messages.play_again_message
 		play_again_or_quit

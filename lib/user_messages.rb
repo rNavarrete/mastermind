@@ -42,7 +42,8 @@ class UserMessages
 
   def winning_message
  	  puts "" 
-    puts "Hey you got it! You're a true MasterMind."	
+    puts "Hey you guessed the sequence! You're a true MasterMind."
+    puts "What's your name?"	
   end
 
   def game_intro(difficulty)
