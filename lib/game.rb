@@ -53,6 +53,8 @@ class Game
 		@input = gets.strip
 		@player_guess = Guess.new(@input, @difficulty)
 		case
+		when player_guess == "q", "quit"
+			exit
 		when player_guess.too_long?
 			messages.guess_too_long(difficulty)
 			create_player_guess
