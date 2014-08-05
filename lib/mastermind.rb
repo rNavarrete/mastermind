@@ -1,6 +1,6 @@
 require_relative 'game'
 
-class MasterMind
+class Mastermind
 	attr_reader :messages, :difficulty, :command
 
 	def initialize
@@ -11,7 +11,7 @@ class MasterMind
 		until quit?
 			messages.welcome_message
 			@command = gets.strip		
-			case 
+			case
 			when play?
 				set_difficulty_and_start_game	
 			when instructions?
@@ -73,5 +73,5 @@ class MasterMind
 end
 
 
-game = MasterMind.new
+game = Mastermind.new
 game.start_up_options

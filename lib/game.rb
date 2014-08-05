@@ -53,8 +53,8 @@ class Game
 		@input = gets.strip
 		@player_guess = Guess.new(@input, @difficulty)
 		case
-		when player_guess == "q", "quit"
-			exit
+		when player_guess.quit? 
+		   exit
 		when player_guess.too_long?
 			messages.guess_too_long(difficulty)
 			create_player_guess
@@ -87,7 +87,7 @@ class Game
 		entry = gets.strip
 		case
 		when play?(entry)
-			@mastermind = MasterMind.new.set_difficulty_and_start_game
+			@mastermind = Mastermind.new.set_difficulty_and_start_game
 		when quit?(entry)
 			messages.quit_message
 			exit

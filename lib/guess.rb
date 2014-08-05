@@ -14,6 +14,10 @@ class Guess
 		@code.join
 	end
 
+	def quit?
+		code == ["Q"] || code == ["Q", "U", "I", "T"]
+	end
+
 	def valid?
 		if guess_too_long? or guess_too_short
 			false
