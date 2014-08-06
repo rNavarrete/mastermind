@@ -42,7 +42,7 @@ class UserMessages
 
   def winning_message
  	  puts "" 
-    puts "Hey you guessed the sequence! You're a true MasterMind."
+    puts "Congratulations! You've guessed the sequence! You're a true MasterMind."
     puts "What's your name?"	
   end
 
@@ -56,8 +56,10 @@ class UserMessages
     puts "What's your guess?"
   end
 
-  def session_time_message(secret_code, guess_counter, time3)
-    puts "Congratulations! You guessed the sequence '#{secret_code.join}' in #{guess_counter} guesses #{time3.round / 60 < 1 ? "in under a minute, nice!" : "over about #{time3.round / 60} minute#{time3 <= 1 ? nil : "s"}."}"         
+  def session_time_message(secret_code, guess_counter, time3, name)
+    puts "#{name}, you guessed the sequence! '#{secret_code.join}' in #{guess_counter} guesses #{time3.round / 60 < 1 ? "in under a minute, nice!" : "over about #{time3.round / 60} minute#{time3 <= 1 ? nil : "s"}."}"
+    puts ""
+    puts "=== TOP 10 ==="         
   end
 
   def guess_too_long(difficulty)

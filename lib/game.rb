@@ -1,21 +1,22 @@
-require_relative 'sequence_generator'
-require_relative 'guess'
-require_relative 'guess_compare'
-require_relative 'user_messages'
-require_relative 'json_creator'
-require 'colorize'
+require_relative 'sequence_generator'  # => true
+require_relative 'guess'               # => true
+require_relative 'guess_compare'       # => true
+require_relative 'user_messages'       # => true
+require_relative 'json_creator'        # => true
+require 'colorize'                     # => false
 
 class Game
-	attr_reader :difficulty, 
-	:secret_code, 
-	:player_guess, 
-	:results, 
-	:time1, 
-	:messages,
-	:time3,
-	:name
+	attr_reader :difficulty,          # => :difficulty
+	:secret_code,                     # => :secret_code
+	:player_guess,                    # => :player_guess
+	:results,                         # => :results
+	:time1,                           # => :time1
+	:messages,                        # => :messages
+	:time3,                           # => :time3
+	:name,                            # => :name
+	:json                             # => nil
 	
-	attr_accessor :guess_counter
+	attr_accessor :guess_counter      # => nil
 	
 	def initialize(difficulty=4)
 		@difficulty  = difficulty
@@ -42,8 +43,10 @@ class Game
 		time_difference
 		messages.winning_message
 		@name = gets.strip
-		@json = Scores.new(name, secret_code, guess_counter, time3).store_score		
-		messages.session_time_message(secret_code, guess_counter, time3)
+		@json = Scores.new(name, secret_code, guess_counter, time3)
+		json.store_score
+		messages.session_time_message(secret_code, guess_counter, time3, name)
+		json.retrieve_scores
 		messages.play_again_message
 		play_again_or_quit
 	end
@@ -113,3 +116,9 @@ end
 
 
 
+# ~> ArgumentError
+# ~> wrong number of arguments (0 for 4)
+# ~>
+# ~> /Users/Home/Desktop/MasterMind/lib/json_creator.rb:9:in `initialize'
+# ~> /Users/Home/Desktop/MasterMind/lib/game.rb:116:in `new'
+# ~> /Users/Home/Desktop/MasterMind/lib/game.rb:116:in `<main>'
