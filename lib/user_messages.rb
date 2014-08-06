@@ -3,8 +3,7 @@ require 'colorize'
 class UserMessages
 	def instructions                 
 	  puts ""	
-	  puts "The computer will create a random 4 to 8 letter sequence, the letters represent different colors. Your challenge is to guess the correct sequence of letters, keep in mind the colors can be repeated. Have fun."  
-	  puts "The chosen pattern is placed in the four holes covered by the shield, visible to the codemaker but not to the codebreaker."
+	  puts "The computer will create a random 4 to 8 letter sequence, the letters represent different colors. Your challenge is to guess the correct sequence of letters, keep in mind the colors can be repeated. Have fun!"  
 	  puts ""
     puts "Would you like to #{"(p)".colorize(:magenta)}lay, read the #{"(i)".colorize(:light_blue)}nstructions, or #{"(q)".colorize(:red)}uit?"    
 	end
