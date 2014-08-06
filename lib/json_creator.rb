@@ -36,15 +36,10 @@ class	Scores
   	
 
   	min_guesses = min_guesses.map {|x| "#{x["name"]} solved #{x["code"]} in #{x["guess_counter"]} guesses #{x["time"].to_i < 1 ? "in under a minute." : "over about #{x["time"]} minutes."}"}  # => ["Robbie solved GYRB in 2 guesses over about 2 minutes.", "Rolando solved BYBR in 5 guesses in under a minute.", "Tony Montana solved BRRB in 6 guesses in under a minute."]
-    min_guesses.each_with_index {|x, y| puts ".#{y+1} #{x}"}                                                                                                                                  # => ["Robbie solved GYRB in 2 guesses over about 2 minutes.", "Rolando solved BYBR in 5 guesses in under a minute.", "Tony Montana solved BRRB in 6 guesses in under a minute."]
+    min_guesses.each_with_index {|x, y| puts ".#{y+1} #{x}"}
+    puts""                                                                                                                                  # => ["Robbie solved GYRB in 2 guesses over about 2 minutes.", "Rolando solved BYBR in 5 guesses in under a minute.", "Tony Montana solved BRRB in 6 guesses in under a minute."]
   end
 end	
 
-json = Scores.new("Robbie", ["G", "Y", "R", "B"], 2, 131)  # => #<Scores:0x00000101183f10 @name="Robbie", @secret_code="GYRB", @guess_counter=2, @time3=2>
-json.retrieve_scores                                       # => ["Robbie solved GYRB in 2 guesses over about 2 minutes.", "Rolando solved BYBR in 5 guesses in under a minute.", "Tony Montana solved BRRB in 6 guesses in under a minute."]
 
 
-
-# >> .1 Robbie solved GYRB in 2 guesses over about 2 minutes.
-# >> .2 Rolando solved BYBR in 5 guesses in under a minute.
-# >> .3 Tony Montana solved BRRB in 6 guesses in under a minute.

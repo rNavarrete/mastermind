@@ -31,9 +31,4 @@ class SequenceGenerator
 	  code = (1..difficulty).map {hard_pool.sample}		
 	end
 
-
-
-
-
-
 end

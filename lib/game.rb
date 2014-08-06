@@ -116,9 +116,4 @@ end
 
 
 
-# ~> ArgumentError
-# ~> wrong number of arguments (0 for 4)
-# ~>
-# ~> /Users/Home/Desktop/MasterMind/lib/json_creator.rb:9:in `initialize'
-# ~> /Users/Home/Desktop/MasterMind/lib/game.rb:116:in `new'
-# ~> /Users/Home/Desktop/MasterMind/lib/game.rb:116:in `<main>'
+

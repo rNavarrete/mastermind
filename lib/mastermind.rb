@@ -8,8 +8,9 @@ class Mastermind
 	end
 
 	def start_up_options
+		messages.welcome_message
+
 		until quit?
-			messages.welcome_message
 			@command = gets.strip		
 			case
 			when play?
