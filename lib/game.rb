@@ -1,22 +1,22 @@
-require_relative 'sequence_generator'  # => true
-require_relative 'guess'               # => true
-require_relative 'guess_compare'       # => true
-require_relative 'user_messages'       # => true
-require_relative 'json_creator'        # => true
-require 'colorize'                     # => false
+require_relative 'sequence_generator'
+require_relative 'guess'
+require_relative 'guess_compare'
+require_relative 'user_messages'
+require_relative 'json_creator'
+require 'colorize'
 
 class Game
-	attr_reader :difficulty,          # => :difficulty
-	:secret_code,                     # => :secret_code
-	:player_guess,                    # => :player_guess
-	:results,                         # => :results
-	:time1,                           # => :time1
-	:messages,                        # => :messages
-	:time3,                           # => :time3
-	:name,                            # => :name
-	:json                             # => nil
+	attr_reader :difficulty,
+	:secret_code,
+	:player_guess,
+	:results,
+	:time1,
+	:messages,
+	:time3,
+	:name,
+	:json
 	
-	attr_accessor :guess_counter      # => nil
+	attr_accessor :guess_counter
 	
 	def initialize(difficulty=4)
 		@difficulty  = difficulty
@@ -113,11 +113,6 @@ class Game
 
 	def quit?(entry)
 		entry == "q" || entry == "quit"
-	end
-
-	def cheat?
-
-		
 	end
 end
 

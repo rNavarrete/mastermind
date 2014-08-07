@@ -2,9 +2,7 @@ require 'colorize'
 
 class UserMessages
 	def instructions                 
-	  puts ""	
-	  puts "The computer will create a random 4 to 8 letter sequence, the letters represent different colors. Your challenge is to guess the correct sequence of letters, keep in mind the colors can be repeated. Have fun!"  
-	  puts ""
+	  puts "\nThe computer will create a random 4 to 8 letter sequence, the letters represent different colors. Your challenge is to guess the correct sequence of letters, keep in mind the colors can be repeated. Have fun!\n"  
     puts "Would you like to #{"(p)".colorize(:magenta)}lay, read the #{"(i)".colorize(:light_blue)}nstructions, or #{"(q)".colorize(:red)}uit?"    
 	end
 
@@ -53,33 +51,25 @@ puts "        ███╗   ███╗ █████╗ ██████�
   end
 
   def quit_message
-  	puts ""	
 		puts "Thanks for playing Master Mind!"
-		puts ""
     system('say "I\'m sorry Dave, I\'m afraid I can\'t let you do that."')
   end
 
   def invalid_input
-    puts ""
-		puts "Not sure what you're trying to do buddy."
-		puts "Let's try this again." 
-		puts "" 	
+		puts "\nNot sure what you're trying to do buddy. Let's try this again.\n" 
   end
 
   def set_difficulty_message
-    puts ""
-  	puts "Please enter a difficulty,#{"(b)".colorize(:green)}eginner, #{"(i)".colorize(:green)}ntermediate, #{"(h)".colorize(:green)}ard or #{"(q)".colorize(:green)}uit."
+  	puts "\nPlease enter a difficulty,#{"(b)".colorize(:green)}eginner, #{"(i)".colorize(:green)}ntermediate, #{"(h)".colorize(:green)}ard or #{"(q)".colorize(:green)}uit."
   end
 
   def winning_message
- 	  puts "" 
-    puts "Congratulations! You've guessed the sequence! You're a true MasterMind."
+    puts "\nCongratulations! You've guessed the sequence! You're a true MasterMind."
     puts "What's your name?".colorize(:red).blink	
   end
 
   def game_intro(difficulty)
-    puts ""
-    puts "I have generated a sequence with #{difficulty} elements made up of:#{difficulty == 8 ? '(o)range'.colorize(:light_red) : nil} #{"(r)ed".colorize(:red)}"
+    puts "\nI have generated a sequence with #{difficulty} elements made up of:#{difficulty == 8 ? '(o)range'.colorize(:light_red) : nil} #{"(r)ed".colorize(:red)}"
     puts "#{"(g)reen".colorize(:green)}, #{"(b)lue".colorize(:blue)},#{difficulty.to_i > 5 ? "(p)urple".colorize(:magenta) : nil} #{"(y)ellow".colorize(:yellow)}. Use (q)uit at any time to end the game."
   end
 
