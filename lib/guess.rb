@@ -1,5 +1,6 @@
 class Guess
 	attr_reader :code, :difficulty
+	attr_accessor :code
 
 	def initialize(input, difficulty=4)
 		@code = input.upcase.split(//)
@@ -16,6 +17,10 @@ class Guess
 
 	def quit?
 		code == ["Q"] || code == ["Q", "U", "I", "T"]
+	end
+
+	def cheat?
+		code == ["C", "H", "E", "A", "T"]
 	end
 
 	def valid?

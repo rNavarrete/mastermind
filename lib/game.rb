@@ -60,8 +60,10 @@ class Game
 		@input = gets.strip
 		@player_guess = Guess.new(@input, @difficulty)
 		case
+		when player_guess.cheat?
+		  player_guess.code = @secret_code	
 		when player_guess.quit? 
-		   exit
+		  exit
 		when player_guess.too_long?
 			messages.guess_too_long(difficulty)
 			create_player_guess
@@ -111,6 +113,11 @@ class Game
 
 	def quit?(entry)
 		entry == "q" || entry == "quit"
+	end
+
+	def cheat?
+
+		
 	end
 end
 
